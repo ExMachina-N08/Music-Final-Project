@@ -1,7 +1,7 @@
 import React from "react";
 
 const Playbar = () => {
-  return <div>Playbar</div>;
+  return <div> This is Playbar</div>;
 };
 
 export default Playbar;
