@@ -1,7 +1,8 @@
 
 
 function App(){
-  return NameCard
+  return <>
+  </>
 };
  
 export default App;

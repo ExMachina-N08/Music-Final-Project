@@ -1,9 +1,12 @@
 import { useState } from "react";
 import musicPlayer from "./Components/MusicPlayer/MusicPlayer";
-import "./App.css";
 
 function App() {
-  return <>Music App Here</>;
+  return (
+    <>
+      <h1>Music App here</h1>
+    </>
+  );
 }
 
 export default App;
