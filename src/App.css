@@ -3,6 +3,9 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: rgb(61, 199, 73);
+  border-radius: 20px;
+  box-shadow: 20px, 20px rgb(87, 86, 86);
 }
 
 .logo {
