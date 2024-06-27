@@ -1,7 +1,7 @@
 import React from "react";
 
-const Content = () => {
-  return <div>Content</div>;
+const Contents = () => {
+  return <div>This is Contents</div>;
 };
 
-export default Content;
+export default Contents;
