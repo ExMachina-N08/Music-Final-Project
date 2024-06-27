@@ -1,9 +1,12 @@
 import { useState } from "react";
-import musicPlayer from "./Components/MusicPlayer/MusicPlayer";
-import "./App.css";
+import MusicPlayer from "./Components/MusicPlayer/MusicPlayer";
 
 function App() {
-  return <>Music App Here</>;
+  return (
+    <>
+      <MusicPlayer />
+    </>
+  );
 }
 
 export default App;
