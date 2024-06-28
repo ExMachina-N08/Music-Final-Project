@@ -1,0 +1,20 @@
+body {
+  /* background: linear-gradient(250deg, #7b2ff7, #f107a3); */
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+.parent {
+  background: white;
+  width: 90vw;
+  height: 100px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.parent[data-isOpen="true"] {
+  width: 95vw;
+  height: 98vh;
+}
