@@ -13,7 +13,7 @@ const TopBar = () => {
             icon={<UserOutlined />}
             className="profile"
           />
-          <h2>User Name</h2>
+          {/* <h2>User Name</h2> */}
         </Space>
       </Flex>
     </>

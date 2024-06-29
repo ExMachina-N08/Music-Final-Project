@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Flex, Layout } from "antd";
-import Playbar from "./Modals/Playbar";
-import TopBar from "./Modals/TopBar";
-import SideBar from "./Modals/SideBar";
-import Contents from "./Modals/Content";
+import Playbar from "../Modals/Playbar";
+import TopBar from "../Modals/TopBar";
+import SideBar from "../Modals/SideBar";
+import Contents from "../Modals/Content";
 import "./musicplayer.css";
 
 //framer Motion
@@ -59,19 +59,20 @@ const MusicPlayer = () => {
   return (
     <div className="music-page">
       <Layout style={layoutStyle}>
-        <Flex
-          justify="start"
-          align="center"
-          vertical={false}
-          style={headerStyle}
-          className=" topbar"
-        >
-          <TopBar />
-        </Flex>
+        <Sider width="15%" style={siderStyle} className="sider">
+          <SideBar />
+        </Sider>
         <Layout>
-          <Sider width="15%" style={siderStyle} className="sider">
-            <SideBar />
-          </Sider>
+          <Flex
+            justify="end"
+            align="center"
+            vertical={false}
+            style={headerStyle}
+            className=" topbar"
+          >
+            <TopBar />
+          </Flex>
+
           <Content style={contentStyle} className="content">
             <Contents />
           </Content>
