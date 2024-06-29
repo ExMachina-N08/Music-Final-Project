@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MusicPlayer from "./Components/MusicPlayer/MusicPlayer";
+import MusicPlayer from "./Components/MusicPlayer/Player/MusicPlayer";
 
 function App() {
   return (
