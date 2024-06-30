@@ -6,6 +6,7 @@
 .sider {
   background-color: rgb(240, 38, 3);
 }
+
 .player {
   background-color: #2c2b2b;
   /* width: 100vw; */
@@ -18,7 +19,7 @@
   margin-top: 855px;
   transition: 100ms;
   justify-content: center;
-  align-items: center;
+  align-items: end;
   display: flex;
 }
 
@@ -39,7 +40,9 @@
   /* min-width: 95vw;
   min-height: 95vh; */
 }
-
+.ant-layout-sider {
+  line-height: 50px;
+}
 .ant-layout-sider-children {
   background-color: #292828;
 }

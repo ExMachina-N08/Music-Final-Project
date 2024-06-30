@@ -41,7 +41,7 @@ const contentStyle = {
 };
 const siderStyle = {
   textAlign: "center",
-  lineHeight: "120px",
+  lineHeight: "50px",
   color: "#fff",
   // backgroundColor: "#1677ff",
   zIndex: 1,
@@ -85,9 +85,7 @@ const MusicPlayer = () => {
           data-isOpen={isOpen}
           onClick={() => setIsOpen(!isOpen)}
         >
-          <motion.div>
-            <Playbar />
-          </motion.div>
+          <Playbar />
         </motion.div>
       </Layout>
     </div>
