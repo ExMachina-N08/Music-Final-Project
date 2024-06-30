@@ -13,7 +13,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
 .login-form-button {
   width: 100%;
   height: 40px;

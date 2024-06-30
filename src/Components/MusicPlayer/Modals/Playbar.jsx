@@ -1,9 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
-
+import "./playBar.css";
 const Playbar = () => {
   return (
-    <>Playbar</>
+    <>
+      <div className="play">
+        <div className="album">this is album</div>
+        <div className="playSet" style={{ paddingLeft: 40 }}>
+          this is play set
+        </div>
+        <div className="volume">this is volume</div>
+      </div>
+    </>
     // <motion.div
     //   layout
     //   data-isOpen={isOpen}
