@@ -6,6 +6,9 @@ import TopBar from "../Modals/TopBar";
 import SideBar from "../Modals/SideBar";
 import Contents from "../Modals/Content";
 import "./musicplayer.css";
+import { Outlet, useLocation } from "react-router-dom";
+import Home from "../Modals/SubModals/Home";
+import Song from "../Modals/SubModals/Song";
 
 //framer Motion
 
@@ -55,6 +58,8 @@ const footerStyle = {
 
 const MusicPlayer = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  console.log("location first", location);
 
   return (
     <div className="music-page">
@@ -74,7 +79,8 @@ const MusicPlayer = () => {
           </Flex>
 
           <Content style={contentStyle} className="content">
-            <Contents />
+            {location.pathname === "/app/home" ? <Home /> : <Song />}
+            {/* <Contents /> */}
           </Content>
         </Layout>
         <motion.div

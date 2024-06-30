@@ -7,8 +7,15 @@ import {
   HistoryOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
+import Home from "./SubModals/Home";
+import { NavLink } from "react-router-dom";
+import Song from "./SubModals/Song";
 
 const { Title } = Typography;
+const route = {
+  "/home": <Home />,
+  "/song": <Song />,
+};
 const SideBar = () => {
   return (
     <>
@@ -37,16 +44,18 @@ const SideBar = () => {
               </li>
               <li>
                 <HomeOutlined />
-                <span style={{ margin: 13 }}>Home</span>
+                <NavLink to={"/app/home"} style={{ margin: 13 }}>
+                  Home
+                </NavLink>
               </li>
               <li>
-                <span>
-                  <img
-                    style={{ width: 20, height: 20 }}
-                    src="/src/assets/musicnote.png"
-                  />
-                </span>
-                <span style={{ margin: 13 }}>Songs</span>
+                <img
+                  style={{ width: 20, height: 20 }}
+                  src="/src/assets/musicnote.png"
+                />
+                <NavLink to={"/app/song"} style={{ margin: 13 }}>
+                  Song
+                </NavLink>
               </li>
               <li>
                 <span>
