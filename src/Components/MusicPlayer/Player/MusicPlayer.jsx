@@ -73,15 +73,17 @@ const MusicPlayer = () => {
             align="center"
             vertical={false}
             style={headerStyle}
-            className=" topbar"
+            className=" className="
+            w-full
+            flex
+            justify-between
+            items-center
+            font-semibold
           >
             <TopBar />
           </Flex>
 
-          <Content style={contentStyle} className="content">
-            {location.pathname === "/app/home" ? <Home /> : <Song />}
-            {/* <Contents /> */}
-          </Content>
+          {location.pathname === "/app/home" ? <Home /> : <Song />}
         </Layout>
         <motion.div
           layout

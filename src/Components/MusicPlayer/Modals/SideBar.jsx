@@ -20,17 +20,15 @@ const SideBar = () => {
   return (
     <>
       <Flex vertical className="sidebar-contents space-align-container">
-        <div className="space-align-block profile-block">
-          <Space
-            direction="horizontal"
-            size={"large"}
-            align="center"
-            style={{ marginBottom: 1.5 }}
-          >
+        <div className="space-align-block profile-block ">
+          <Space direction="horizontal" size={"large"} align="center">
             <Avatar size={{ xs: 24, sm: 32, md: 70, lg: 70, xl: 70, xxl: 55 }}>
               <UserOutlined style={{ fontSize: 40 }} />
             </Avatar>
-            <Title style={{ color: "lightgray" }} level={3}>
+            <Title
+              style={{ color: "lightgray" }}
+              className="xxl:h-5 h-2 h-1 font-bold "
+            >
               User Name
             </Title>
           </Space>
