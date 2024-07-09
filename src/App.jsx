@@ -9,21 +9,7 @@ import Playlist from "./Components/MusicPlayer/Modals/SubModals/Playlist";
 import New from "./Components/MusicPlayer/Modals/SubModals/New";
 
 function App() {
-  return (
-    <MusicPlayer>
-      <Routes>
-        <Route path="/" element={<Outlet />} /> // This ensures that MusicPlayer
-        is always rendered
-        <Route path="home" element={<Home />}>
-          <Route path="album/:id" element={<AlbumItem />} />
-        </Route>
-        <Route path="song" element={<Song />} />
-        <Route path="genre" element={<Genre />} />
-        <Route path="playlist" element={<Playlist />} />
-        <Route path="new" element={<New />} />
-      </Routes>
-    </MusicPlayer>
-  );
+  return <MusicPlayer />;
 }
 
 export default App;
