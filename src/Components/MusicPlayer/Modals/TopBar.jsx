@@ -1,24 +1,32 @@
 import React from "react";
 import { SpotifyFilled, UserOutlined } from "@ant-design/icons";
 import { Avatar, Flex, Space } from "antd";
-import "./topbar.css";
+
+import { assets } from "../../../assets/assets";
 const TopBar = () => {
   // const [value, setValue] = React.useState("horizontal");
   return (
     <>
-      <Flex>
-        <Space align="center" size={"small"}>
-          <Avatar
-            size={{ xs: 24, sm: 32, md: 40, lg: 50, xl: 50, xxl: 55 }}
-            icon={<SpotifyFilled />}
-            style={{ fontSize: 30 }}
-            className="profile"
+      <div className="w-full flex justify-between items-center font-semibold">
+        <div className="flex items-center gap-2">
+          <img
+            className="w-8 bg-black p-2 rounded-2xl cursor-pointer"
+            src={assets.arrow_left}
+            alt=""
           />
-          {/* <h2>User Name</h2> */}
-        </Space>
-      </Flex>
+          <img
+            className="w-8 bg-black p-2 rounded-2xl cursor-pointer"
+            src={assets.arrow_right}
+            alt=""
+          />
+        </div>
+        <div className="flex items-center gap-4">
+          <p className="bg-white text-black text-[15px] px-3 py-1 rounded-2xl hidden md:block cursor-pointer">
+            Explore Premium
+          </p>
+        </div>
+      </div>
     </>
   );
 };
-
 export default TopBar;

@@ -1,10 +1,6 @@
 .sidebar-contents {
 }
 li {
-  line-height: 50px;
-  font-size: 20px;
-  text-align: start;
-  justify-items: center;
   transition: 0.3s ease-in-out;
   &:hover {
     color: rgb(23, 248, 109);
@@ -12,12 +8,11 @@ li {
 
   cursor: pointer;
 }
-.profile-block h4 {
-  margin-bottom: 1.5em;
-}
-.list {
-  gap: 1rem;
-  padding-top: 150px;
-  padding-left: 40px;
-  padding-right: 10px;
+
+a {
+  transition: 0.3s ease-in-out;
+  color: white;
+  &:hover {
+    color: rgb(23, 248, 109);
+  }
 }
