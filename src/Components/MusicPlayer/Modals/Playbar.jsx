@@ -1,27 +1,107 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
+import { assets, songsData } from "../../../assets/assets";
 import "./playBar.css";
+import { PlayerContext } from "../../Context/PlayerContext";
 const Playbar = () => {
+  const {
+    track,
+    seekBar,
+    seekBg,
+    playStatus,
+    play,
+    pause,
+    time,
+    previous,
+    next,
+    seekSong,
+  } = useContext(PlayerContext);
   return (
     <>
-      <div className="play">
-        <div className="album">this is album</div>
-        <div className="playSet" style={{ paddingLeft: 40 }}>
-          this is play set
+      <div className="play text-white px-3S">
+        <div className="album  lg:flex items-center gap-4  ">
+          <img
+            className="w-12 rounded 
+            "
+            src={track.image}
+            alt=""
+          />
+          <div className="hidden lg:flex flex-col items-start gap-1">
+            <p>{track.name}</p>
+            <p>{track.desc.slice(0, 18)}</p>
+          </div>
         </div>
-        <div className="volume">this is volume</div>
+        <div
+          className="playSet flex flex-col items-center gap-1 m-auto"
+          style={{ paddingLeft: 40 }}
+        >
+          <div className="flex gap-4">
+            <img
+              className="w-4 cursor-pointer"
+              src={assets.shuffle_icon}
+              alt=""
+            />
+            <img
+              onClick={previous}
+              className="w-4 cursor-pointer"
+              src={assets.prev_icon}
+              alt=""
+            />
+            {playStatus ? (
+              <img
+                onClick={pause}
+                className="w-4 cursor-pointer"
+                src={assets.pause_icon}
+                alt=""
+              />
+            ) : (
+              <img
+                onClick={play}
+                className="w-4 cursor-pointer"
+                src={assets.play_icon}
+                alt=""
+              />
+            )}
+
+            <img
+              onClick={next}
+              className="w-4 cursor-pointer"
+              src={assets.next_icon}
+              alt=""
+            />
+            <img className="w-4 cursor-pointer" src={assets.loop_icon} alt="" />
+          </div>
+          <div className=" flex items-center gap-5">
+            <p>
+              {time.currentTime.minute}:{time.currentTime.second}
+            </p>
+            <div
+              ref={seekBg}
+              onClick={seekSong}
+              className="w-[60vw] max-w[500px] bg-gray-300 rounded-full cursor-pointer"
+            >
+              <hr
+                ref={seekBar}
+                className="h-1 border-none w-80 bg-green-800 rounded-full"
+              />
+            </div>
+            <p>
+              {time.totalTime.minute}:{time.totalTime.second}
+            </p>
+          </div>
+        </div>
+        <div className="volume hidden xl:flex items-center gap-2 opacity-75">
+          <img className="w-4" src={assets.plays_icon} />
+          <img className="w-4" src={assets.mic_icon} />
+          <img className="w-4" src={assets.queue_icon} />
+          <img className="w-4" src={assets.speaker_icon} />
+          <img className="w-4" src={assets.volume_icon} />
+          <div className="w-20 bg-slate-50 h-1 rounded"></div>
+          <img className="w-4" src={assets.zoom_icon} />
+        </div>
       </div>
     </>
-    // <motion.div
-    //   layout
-    //   data-isOpen={isOpen}
-    //   initial={{ borderRadius: 30 }}
-    //   className="parent"
-    //   onClick={() => setIsOpen(!isOpen)}
-    // >
-    //   <motion.div layout className="child" />
-    // </motion.div>
   );
 };
-
 export default Playbar;
+// cái chỗ click dau a
