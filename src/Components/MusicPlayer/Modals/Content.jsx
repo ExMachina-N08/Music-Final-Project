@@ -25,18 +25,11 @@ const Contents = () => {
   // const Component = routes[location.pathname] || <Home />; // Default to <Home /> if no path matches
 
   // return <>{Component}</>;
-  return (
-    <Routes>
-      <Route path="home" element={<Home />}>
-        <Route path="album/:id" element={<AlbumItem />} />
-      </Route>
-
-      <Route path="song" element={<Song />} />
-      <Route path="genre" element={<Genre />} />
-      <Route path="playlist" element={<Playlist />} />
-      <Route path="new" element={<New />} />
-    </Routes>
-  );
+  return <Outlet />;
 };
-
+// sao làm routes ở đây a, khong lun sai rui, folder này tạo ra mục đích gì a  der render content cua thang ben sider ak
 export default Contents;
+// là sao, ý là cái này sinh ra để hiện content khi anh click vo TOP 50 GLOBAL dung k
+// ko thang Home co cai dong item con thi a gom het cho render ben trong thang content thui
+// sai rui a, anh p để 1 chỗ routes nó quản lý thoi, tạo lung tung mnot61 đuồng đâu mà lần :V
+// giờ anh qua th main, tạo th routes khi bấm vào

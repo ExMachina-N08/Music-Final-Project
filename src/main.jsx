@@ -11,15 +11,16 @@ import Playlist from "./Components/MusicPlayer/Modals/SubModals/Playlist.jsx";
 import Genre from "./Components/MusicPlayer/Modals/SubModals/Genre.jsx";
 import New from "./Components/MusicPlayer/Modals/SubModals/New.jsx";
 import AlbumItem from "./Components/MusicPlayer/Modals/SubModals/AlbumItem.jsx";
-import MusicPlayer from "./Components/MusicPlayer/Player/MusicPlayer.jsx";
+import Album from "./Components/MusicPlayer/Modals/SubModals/Album.jsx";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Routes>
       <Route path="login" element={<Login />} />
       <Route path="/" element={<App />}>
-        <Route path="home" element={<Home />}>
-          <Route path="album/:id" element={<AlbumItem />} />
-        </Route>
+        <Route path="home" element={<Home />} />
+        <Route path="/album/:id" element={<AlbumItem />} />
+        <Route path="/album/:id/" element={<Album />} />
 
         <Route path="song" element={<Song />} />
         <Route path="genre" element={<Genre />} />
@@ -31,3 +32,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </Routes>
   </BrowserRouter>
 );
+// sao anh làm 2 cái routes v, 1 cái đc r a cái content là đâu ra nữa :v

@@ -6,11 +6,16 @@ const Playbar = () => {
   return (
     <>
       <div className="play text-white px-3S">
-        <div className="album hidden lg:flex items-center gap-4 ">
-          <img className="w-12" src={songsData[0].image} alt="" />
-          <div>
+        <div className="album  lg:flex items-center gap-4  ">
+          <img
+            className="w-12 rounded 
+            "
+            src={songsData[0].image}
+            alt=""
+          />
+          <div className="hidden lg:flex flex-col items-start gap-1">
             <p>{songsData[0].name}</p>
-            <p>{songsData[0].descr}</p>
+            <p>{songsData[0].desc.slice(0, 18)}</p>
           </div>
         </div>
         <div
@@ -36,7 +41,7 @@ const Playbar = () => {
             <p>3:20</p>
           </div>
         </div>
-        <div className="volume hidden lg:flex items-center gap-2 opacity-75">
+        <div className="volume hidden xl:flex items-center gap-2 opacity-75">
           <img className="w-4" src={assets.plays_icon} />
           <img className="w-4" src={assets.mic_icon} />
           <img className="w-4" src={assets.queue_icon} />
@@ -50,3 +55,4 @@ const Playbar = () => {
   );
 };
 export default Playbar;
+// cái chỗ click dau a

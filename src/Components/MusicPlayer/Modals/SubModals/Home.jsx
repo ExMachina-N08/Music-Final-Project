@@ -21,9 +21,9 @@ const Home = () => {
           <div className="flex overflow-auto">
             {albumsData.map((item) => (
               <Link
-                to={`album/${item.id}`}
+                to={`/album/${item.id}`}
                 key={item.id}
-                className="min-w-[180px] pt-2 px-3 rounded cursor-pointer hover:bg-[#ffffff26]"
+                className="min-w-[180px] pt-2 px-3 rounded cursor-pointer hover:bg-[#ffffff26] hover:text-green-500"
               >
                 <img className="rounded" src={item.image} alt={item.name} />
                 <p className="font-bold mt-2 mb-1">{item.name}</p>
