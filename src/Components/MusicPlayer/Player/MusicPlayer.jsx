@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import { Flex, Layout } from "antd";
 import Playbar from "../Modals/Playbar";
@@ -9,13 +9,10 @@ import "./musicplayer.css";
 import { Outlet, useLocation, Route, Routes } from "react-router-dom";
 import Home from "../Modals/SubModals/Home";
 import Song from "../Modals/SubModals/Song";
-//framer Motion
+import PlayerContextProvider, {
+  PlayerContext,
+} from "../../Context/PlayerContext";
 
-// useNavigation
-// const location = useLocation();
-// console.log("location first", location);
-
-//Ant Design
 const { Header, Footer, Sider, Content } = Layout;
 
 const layoutStyle = {
@@ -42,7 +39,7 @@ const contentStyle = {
   textAlign: "center",
   lineHeight: "25px",
   marginTop: 65, // Space below the header, equals header height
-  height: "calc(100vh - 65px)", // Adjust the height to account for the header
+  height: "calc(98vh - 65px)", // Adjust the height to account for the header
   color: "#fff",
   overflow: "auto",
 };
@@ -61,17 +58,18 @@ const footerStyle = {
   textAlign: "center",
   color: "#fff",
   position: "fixed",
-  left: 20,
-  right: 0,
+  width: "98vw",
+
   bottom: 0,
   zIndex: 2,
 };
 
 const MusicPlayer = () => {
+  const { audioRef, track } = useContext(PlayerContext);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="music-page">
+    <div>
       <Layout style={layoutStyle}>
         <Sider
           width="15%"
@@ -96,18 +94,18 @@ const MusicPlayer = () => {
             {<Contents />}
           </Content>
         </Layout>
+        <motion.footer
+          layout
+          initial={{ borderRadius: 15 }}
+          style={footerStyle}
+          className="player"
+          // data-isOpen={isOpen}
+          // onClick={() => setIsOpen(!isOpen)}
+        >
+          <Playbar />
+        </motion.footer>
       </Layout>
-
-      <motion.div
-        layout
-        initial={{ borderRadius: 15 }}
-        style={footerStyle}
-        className="player"
-        data-isOpen={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <Playbar />
-      </motion.div>
+      <audio ref={audioRef} src={track.file} preload="auto"></audio>
     </div>
   );
 };

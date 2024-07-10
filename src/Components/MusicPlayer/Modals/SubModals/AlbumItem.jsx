@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate, Route, Routes, Outlet } from "react-router-dom";
+import { PlayerContext } from "../../../Context/PlayerContext";
 
 const AlbumItem = ({ image, name, desc, id }) => {
   const navigate = useNavigate();
