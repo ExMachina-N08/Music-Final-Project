@@ -9,7 +9,7 @@ const Album = () => {
   console.log(albumData);
   return (
     <>
-      <div className=" flex gap-8 flex-col mt-3  md:flex-row md:items-end sm:items-center xl:ml-24 p-3">
+      <div className=" flex gap-8 flex-col mt-3 items-start  md:flex-row md:items-end sm:items-center xl:ml-24 p-3">
         <img className="w-48 rounded " src={albumData.image} />
 
         <div className="flex flex-col">

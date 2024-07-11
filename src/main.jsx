@@ -21,7 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="login" element={<Login />} />
         <Route path="/" element={<App />}>
           <Route path="home" element={<Home />} />
-          <Route path="/album/:id" element={<AlbumItem />} />
+          {/* <Route path="/album/:id" element={<AlbumItem />} /> */}
           <Route path="/album/:id/" element={<Album />} />
           <Route path="song" element={<Song />} />
           <Route path="genre" element={<Genre />} />
@@ -34,4 +34,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </PlayerContextProvider>
   </BrowserRouter>
 );
-// sao anh làm 2 cái routes v, 1 cái đc r a cái content là đâu ra nữa :v

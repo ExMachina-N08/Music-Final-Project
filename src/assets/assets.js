@@ -100,7 +100,7 @@ export const albumsData = [
   },
   {
     id: 4,
-    name: "Mega Hits,",
+    name: "Mega Hits",
     image: img11,
     desc: "Your weekly update of the most played tracks",
     bgColor: "#234e52",
@@ -125,11 +125,11 @@ export const songsData = [
   },
   {
     id: 1,
-    name: "Song Two",
+    name: "Something About Us",
     image: img2,
     file: song2,
-    desc: "Put a smile on your face with these happy tunes",
-    duration: "2:20",
+    desc: "Discovery",
+    duration: "5:04",
   },
   {
     id: 2,
