@@ -25,7 +25,7 @@ const TopBar = () => {
         </div>
         <div className="flex items-center gap-4">
           <p className="bg-white text-black text-[15px] px-3 py-1 rounded-2xl hidden md:block cursor-pointer">
-            Explore Premium
+            Search
           </p>
         </div>
       </div>

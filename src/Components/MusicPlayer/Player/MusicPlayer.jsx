@@ -65,10 +65,14 @@ const footerStyle = {
 };
 
 const MusicPlayer = () => {
-  const { audioRef, track, backgroundGradient } = useContext(PlayerContext);
+  const { audioRef, track, backgroundGradient, toggleActive, isActive } =
+    useContext(PlayerContext);
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = () => setIsOpen(!isOpen);
-  console.log("clicked", toggleOpen);
+
+  const activeStyle = {
+    color: isActive ? "text-green-500" : "white", // Dynamic styling based on isActive state
+  };
   const overlayBackground = `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), ${backgroundGradient}`;
   return (
     <div>
@@ -78,6 +82,7 @@ const MusicPlayer = () => {
           style={siderStyle}
           className="sider"
           activeClassName="text-green-500"
+          onClick={toggleActive}
         >
           {<SideBar />}
         </Sider>

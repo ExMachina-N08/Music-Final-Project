@@ -7,8 +7,6 @@ const PlayerContextProvider = ({ children }) => {
   const audioRef = useRef(new Audio());
   const seekBg = useRef();
   const seekBar = useRef();
-
-  // set player logic for play/pause : songData[0] => always load track at index 0 when first started
   const [track, setTrack] = useState(songsData[0]);
 
   //reveal or hide component
@@ -99,6 +97,16 @@ const PlayerContextProvider = ({ children }) => {
       };
     }, 1000);
   }, [audioRef]);
+
+  const [activePath, setActivePath] = useState("");
+
+  const toggleActiveState = (path) => {
+    setActivePath(path); // Set the active path
+  };
+
+  const isActive = (path) => {
+    return path === activePath; // Check if the provided path is the active path
+  };
   const contextValue = {
     audioRef,
     seekBg,
@@ -117,6 +125,8 @@ const PlayerContextProvider = ({ children }) => {
     seekSong,
     songs: songsData,
     backgroundGradient,
+    isActive,
+    toggleActiveState,
   };
   // given any component access to properties inside PlayerContext function
   return (

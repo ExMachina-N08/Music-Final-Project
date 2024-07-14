@@ -60,7 +60,7 @@ const Playbar = ({ onAlbumClick }) => {
             <p className={isExpanded ? "text-[30px]" : ""}>{track.name}</p>
             <p className={isExpanded ? "text-[20px]" : ""}>
               {" "}
-              {track.desc.slice(0, 18)}
+              {track.desc.slice(0, 22)}
             </p>
           </div>
         </div>
@@ -76,7 +76,9 @@ const Playbar = ({ onAlbumClick }) => {
                 : "playSet flex flex-col items-center gap-1 m-auto"
             }
           >
-            <div className={isExpanded ? "flex gap-20 pb-5" : "flex gap-4"}>
+            <div
+              className={isExpanded ? "flex gap-20 pb-5 mt-8" : "flex gap-4"}
+            >
               <img
                 className={
                   isExpanded

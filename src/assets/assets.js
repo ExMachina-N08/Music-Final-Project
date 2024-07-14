@@ -138,10 +138,10 @@ export const songsData = [
   },
   {
     id: 2,
-    name: "Song Three",
+    name: "Fragments of Time",
     image: img3,
     file: song3,
-    desc: "Put a smile on your face with these happy tunes",
+    desc: "Random Access Memories",
     duration: "2:32",
   },
   {
