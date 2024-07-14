@@ -24,7 +24,7 @@ const Contents = () => {
     }
   });
   return (
-    <div ref={displayRef} className="w-[100%] m-1 px-4 pt-4 rounded">
+    <div ref={displayRef} className="w-[100%] m-1 px-4 pt-4 rounded xl:mb-10">
       {<Outlet />}
     </div>
   );

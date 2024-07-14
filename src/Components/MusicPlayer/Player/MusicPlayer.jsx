@@ -60,14 +60,16 @@ const footerStyle = {
   position: "fixed",
   width: "98vw",
 
-  bottom: 0,
+  bottom: 5,
   zIndex: 2,
 };
 
 const MusicPlayer = () => {
-  const { audioRef, track } = useContext(PlayerContext);
+  const { audioRef, track, backgroundGradient } = useContext(PlayerContext);
   const [isOpen, setIsOpen] = useState(false);
-
+  const toggleOpen = () => setIsOpen(!isOpen);
+  console.log("clicked", toggleOpen);
+  const overlayBackground = `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), ${backgroundGradient}`;
   return (
     <div>
       <Layout style={layoutStyle}>
@@ -95,14 +97,23 @@ const MusicPlayer = () => {
           </Content>
         </Layout>
         <motion.footer
-          layout
-          initial={{ borderRadius: 15 }}
-          style={footerStyle}
+          initial={{
+            opacity: 0,
+            borderRadius: 15,
+          }}
+          animate={{ opacity: 1, background: overlayBackground }}
+          transition={{
+            opacity: { delay: 0.5, duration: 0.5 },
+            background: { type: "ease-in", delay: 0.5, duration: 1 },
+          }}
+          style={{ ...footerStyle, background: overlayBackground }}
           className="player"
-          // data-isOpen={isOpen}
-          // onClick={() => setIsOpen(!isOpen)}
+          data-isOpen={isOpen}
         >
-          <Playbar />
+          <Playbar
+            onClick={() => setIsOpen(!isOpen)}
+            onAlbumClick={toggleOpen}
+          />
         </motion.footer>
       </Layout>
       <audio ref={audioRef} src={track.file} preload="auto"></audio>

@@ -1,28 +1,28 @@
-import React from "react";
-import { Card } from "antd";
-const Song = () => {
+import React, { useContext } from "react";
+import { PlayerContext } from "../../../Context/PlayerContext";
+
+const Songs = () => {
+  const { songs, playWithId } = useContext(PlayerContext);
+
   return (
-    <>
-      <div
-        className=" m-3
-    "
-      >
-        <Card
-          className="m-3"
-          hoverable
-          style={{ width: 240 }}
-          cover={
-            <img
-              alt="example"
-              src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-            />
-          }
+    <div className="grid grid-cols-1 p-7 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {songs.map((song, index) => (
+        <div
+          onClick={() => playWithId(song.id)}
+          key={index}
+          className="bg-gray-800 p-4 rounded-lg  flex flex-col items-center"
         >
-          <a href="">this is card content</a>
-        </Card>
-      </div>
-    </>
+          <img
+            src={song.image}
+            alt={song.name}
+            className="w-full h-auto rounded"
+          />
+          <h3 className="text-white text-lg mt-2">{song.name}</h3>
+          <p className="text-gray-400">{song.desc}</p>
+        </div>
+      ))}
+    </div>
   );
 };
 
-export default Song;
+export default Songs;

@@ -22,7 +22,21 @@
   justify-content: center;
   align-items: end;
   display: flex;
+  opacity: 1;
 }
+
+/* .player::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit; 
+  z-index: -1;
+  opacity: 0;
+  transition: 1s ease-in-out;
+} */
 
 .player[data-isOpen="true"] {
   width: 98vw;

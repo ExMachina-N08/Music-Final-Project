@@ -20,6 +20,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="login" element={<Login />} />
         <Route path="/" element={<App />}>
+          {/*  Sets Home as the default */}
+          <Route index element={<Home />} />
+          component
           <Route path="home" element={<Home />} />
           {/* <Route path="/album/:id" element={<AlbumItem />} /> */}
           <Route path="/album/:id/" element={<Album />} />

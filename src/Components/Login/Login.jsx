@@ -2,14 +2,17 @@ import React from "react";
 
 import "./login.css";
 import { SpotifyFilled } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input, ConfigProvider } from "antd";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const onFinish = (values) => {
     console.log("Success:", values);
     localStorage.setItem("userData", JSON.stringify(values));
+    navigate("/");
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -92,7 +95,7 @@ const Login = () => {
               className="login-form-button"
               style={{ fontSize: 22 }}
             >
-              <Link to="/app">Login</Link>
+              Login
             </Button>
           </Form.Item>
         </Form>

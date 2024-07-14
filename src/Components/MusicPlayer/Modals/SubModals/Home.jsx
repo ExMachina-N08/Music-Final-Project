@@ -34,7 +34,7 @@ const Home = () => {
         </div>
         <div className="my-5 font-bold text-2xl">
           <h1 className="my-5 font-bold text-2xl">Today's biggest hit</h1>
-          <div className="flex overflow-auto">
+          <div className="flex overflow-auto ">
             {songsData.map((item, index) => (
               <SongItems
                 key={index}

@@ -1,10 +1,10 @@
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { songsData } from "../../assets/assets";
-
+import { extractColors } from "extract-colors";
 export const PlayerContext = createContext();
 
-const PlayerContextProvider = (props) => {
-  const audioRef = useRef();
+const PlayerContextProvider = ({ children }) => {
+  const audioRef = useRef(new Audio());
   const seekBg = useRef();
   const seekBar = useRef();
 
@@ -13,6 +13,21 @@ const PlayerContextProvider = (props) => {
 
   //reveal or hide component
   const [playStatus, setPlayStatus] = useState(false);
+
+  //  dynamic background gradient
+  const [backgroundGradient, setBackgroundGradient] = useState("");
+
+  // Fetch and set the background gradient based on the dominant colors of the track image
+  useEffect(() => {
+    if (track.image) {
+      extractColors(track.image).then((colors) => {
+        if (colors.length > 1) {
+          const gradient = `linear-gradient(to top, ${colors[0].hex}, ${colors[1].hex})`;
+          setBackgroundGradient(gradient);
+        }
+      });
+    }
+  }, [track]);
 
   // logic for display duration
   const [time, setTime] = useState({
@@ -100,11 +115,13 @@ const PlayerContextProvider = (props) => {
     previous,
     next,
     seekSong,
+    songs: songsData,
+    backgroundGradient,
   };
   // given any component access to properties inside PlayerContext function
   return (
     <PlayerContext.Provider value={contextValue}>
-      {props.children}
+      {children}
     </PlayerContext.Provider>
   );
 };

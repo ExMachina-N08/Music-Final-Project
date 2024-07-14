@@ -9,7 +9,7 @@ const Album = () => {
   console.log(albumData);
   return (
     <>
-      <div className=" flex gap-8 flex-col mt-3 items-start  md:flex-row md:items-end sm:items-center xl:ml-24 p-3">
+      <div className=" flex gap-8 flex-col mt-3 items-center md:flex-row md:items-end sm:items-center xl: p-5">
         <img className="w-48 rounded " src={albumData.image} />
 
         <div className="flex flex-col">
@@ -41,7 +41,7 @@ const Album = () => {
           key={index}
           className="grid grid-cols-3 sm:grid-cols-4 gap-2 p-2 mt-1 mb-1  text-[#a7a7a7] hover:bg-[#ffffff2b] cursor-pointer"
         >
-          <p className="text-white ml-10">
+          <p className="text-white ml-10 flex items-start">
             <b className="mr-4 text-[#a7a7a7]">{index + 1}</b>
             <img className="inline w-10 mr-5 " src={item.image} alt="" />
             {item.name}
