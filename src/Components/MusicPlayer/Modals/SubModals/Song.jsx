@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { PlayerContext } from "../../../Context/PlayerContext";
+import { useNavigate } from "react-router-dom";
 
 const Songs = () => {
+  const navigate = useNavigate;
   const { songs, playWithId } = useContext(PlayerContext);
 
   return (

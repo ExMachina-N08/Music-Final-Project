@@ -1,11 +1,23 @@
-import React from "react";
-import { SpotifyFilled, UserOutlined } from "@ant-design/icons";
+import React, { useContext } from "react";
+import { SearchOutlined, SpotifyFilled, UserOutlined } from "@ant-design/icons";
 import { Avatar, Flex, Space } from "antd";
-
+import { useState } from "react";
 import { assets } from "../../../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { PlayerContext } from "../../Context/PlayerContext";
 const TopBar = () => {
   const navigate = useNavigate();
+  const [searchVisible, setSearchVisible] = useState(false); // State to manage input visibility
+  const { setSearchQuery, filteredSongs } = useContext(PlayerContext); // Correctly place useContext at the component top level
+
+  const toggleSearch = () => {
+    setSearchVisible(!searchVisible); // Toggle visibility
+  };
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value); // Update the search query in context
+    console.log("search", event.target.value);
+  };
   return (
     <>
       <div className="w-full flex justify-between items-center font-semibold">
@@ -23,9 +35,23 @@ const TopBar = () => {
             alt=""
           />
         </div>
-        <div className="flex items-center gap-4">
-          <p className="bg-white text-black text-[15px] px-3 py-1 rounded-2xl hidden md:block cursor-pointer">
-            Search
+        <div className=" bg-black flex flex-row items-center gap-4 rounded-2xl">
+          {searchVisible && (
+            <input
+              type="text"
+              placeholder="Search..."
+              onChange={handleSearch}
+              className="transition-width duration-500 w-0 focus:w-[200px] bg-transparent rounded px-4 py-1 outline-none"
+              style={{
+                width: searchVisible ? "400px" : "0px",
+              }} // Apply dynamic width based on state
+            />
+          )}
+          <p
+            onClick={toggleSearch}
+            className=" text-white text-[15px] px-3 py-1   md:block cursor-pointer"
+          >
+            <SearchOutlined />
           </p>
         </div>
       </div>

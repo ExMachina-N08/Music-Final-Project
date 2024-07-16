@@ -12,6 +12,12 @@ const PlayerContextProvider = ({ children }) => {
   //reveal or hide component
   const [playStatus, setPlayStatus] = useState(false);
 
+  // State to manage modal visibility
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  // Function to open and close the profile modal
+  const openProfileModal = () => setIsProfileModalOpen(true);
+  const closeProfileModal = () => setIsProfileModalOpen(false);
+
   //  dynamic background gradient
   const [backgroundGradient, setBackgroundGradient] = useState("");
 
@@ -45,7 +51,7 @@ const PlayerContextProvider = ({ children }) => {
     setPlayStatus(true);
   };
 
-  // create pause funciton
+  // create pause function
   const pause = () => {
     audioRef.current.pause();
     setPlayStatus(false);
@@ -107,6 +113,37 @@ const PlayerContextProvider = ({ children }) => {
   const isActive = (path) => {
     return path === activePath; // Check if the provided path is the active path
   };
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredSongs, setFilteredSongs] = useState(songsData);
+
+  // Update filtered results when searchQuery changes
+  useEffect(() => {
+    if (searchQuery) {
+      const lowercasedQuery = searchQuery.toLowerCase();
+      const filtered = songsData.filter(
+        (song) =>
+          song.name.toLowerCase().includes(lowercasedQuery) ||
+          song.desc.toLowerCase().includes(lowercasedQuery)
+      );
+      setFilteredSongs(filtered);
+    } else {
+      setFilteredSongs(songsData); // reset if search query is cleared
+    }
+  }, [searchQuery]);
+  const [username, setUsername] = useState(
+    localStorage.getItem("username") || ""
+  );
+  const [profileImage, setProfileImage] = useState(
+    localStorage.getItem("profileImage") || ""
+  );
+  const updateProfile = (name, image) => {
+    localStorage.setItem("username", name);
+    localStorage.setItem("profileImage", image);
+    setUsername(name);
+    setProfileImage(image);
+  };
+
   const contextValue = {
     audioRef,
     seekBg,
@@ -127,6 +164,17 @@ const PlayerContextProvider = ({ children }) => {
     backgroundGradient,
     isActive,
     toggleActiveState,
+    searchQuery,
+    setSearchQuery,
+    filteredSongs,
+    openProfileModal,
+    closeProfileModal,
+    isProfileModalOpen,
+    username,
+    setUsername,
+    profileImage,
+    setProfileImage,
+    updateProfile,
   };
   // given any component access to properties inside PlayerContext function
   return (

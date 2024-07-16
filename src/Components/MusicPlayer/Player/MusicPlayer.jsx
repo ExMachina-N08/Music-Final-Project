@@ -6,9 +6,11 @@ import TopBar from "../Modals/TopBar";
 import SideBar from "../Modals/SideBar";
 import Contents from "../Modals/Content";
 import "./musicplayer.css";
+import { useDrag } from "@use-gesture/react";
 import { Outlet, useLocation, Route, Routes } from "react-router-dom";
 import Home from "../Modals/SubModals/Home";
 import Song from "../Modals/SubModals/Song";
+import Profile from "../Modals/SubModals/Profile";
 import PlayerContextProvider, {
   PlayerContext,
 } from "../../Context/PlayerContext";
@@ -65,8 +67,15 @@ const footerStyle = {
 };
 
 const MusicPlayer = () => {
-  const { audioRef, track, backgroundGradient, toggleActive, isActive } =
-    useContext(PlayerContext);
+  const {
+    audioRef,
+    track,
+    backgroundGradient,
+    toggleActive,
+    isActive,
+    isProfileModalOpen,
+    closeProfileModal,
+  } = useContext(PlayerContext);
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = () => setIsOpen(!isOpen);
 
@@ -76,6 +85,7 @@ const MusicPlayer = () => {
   const overlayBackground = `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), ${backgroundGradient}`;
   return (
     <div>
+      {isProfileModalOpen && <Profile onClose={closeProfileModal} />}
       <Layout style={layoutStyle}>
         <Sider
           width="15%"

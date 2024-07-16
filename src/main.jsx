@@ -13,7 +13,9 @@ import New from "./Components/MusicPlayer/Modals/SubModals/New.jsx";
 import AlbumItem from "./Components/MusicPlayer/Modals/SubModals/AlbumItem.jsx";
 import Album from "./Components/MusicPlayer/Modals/SubModals/Album.jsx";
 import PlayerContextProvider from "./Components/Context/PlayerContext.jsx";
-
+import SongItems from "./Components/MusicPlayer/Modals/SubModals/SongItems.jsx";
+import SongDetail from "./Components/MusicPlayer/Modals/SubModals/SongDetail.jsx";
+import Profile from "./Components/MusicPlayer/Modals/SubModals/Profile.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <PlayerContextProvider>
@@ -27,6 +29,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           {/* <Route path="/album/:id" element={<AlbumItem />} /> */}
           <Route path="/album/:id/" element={<Album />} />
           <Route path="song" element={<Song />} />
+          {/* <Route path="/song/:songId" element={<SongItems />} /> */}
           <Route path="genre" element={<Genre />} />
           <Route path="playlist" element={<Playlist />} />
           <Route path="new" element={<New />} />

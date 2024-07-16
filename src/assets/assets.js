@@ -23,7 +23,7 @@ import arrow_left from "./left_arrow.png";
 import spotify_logo from "./spotify_logo.png";
 import clock_icon from "./clock_icon.png";
 import img1 from "./img1.jpg";
-import img2 from "./img2.jpg";
+import img2 from "./img2.bmp";
 import img3 from "./img3.jpg";
 import img4 from "./img4.jpg";
 import img5 from "./img5.jpg";
@@ -46,7 +46,8 @@ import song5 from "./song5.mp3";
 import song6 from "./song6.mp3";
 import song7 from "./song7.mp3";
 import song8 from "./song8.mp3";
-
+import song9 from "./song9.mp3";
+import img17 from "./img17.bmp";
 export const assets = {
   bell_icon,
   home_icon,
@@ -182,6 +183,14 @@ export const songsData = [
     image: img12,
     file: song8,
     desc: "Control",
+    duration: "2:35",
+  },
+  {
+    id: 8,
+    name: "Games",
+    image: img17,
+    file: song9,
+    desc: "Angles",
     duration: "2:35",
   },
 ];
