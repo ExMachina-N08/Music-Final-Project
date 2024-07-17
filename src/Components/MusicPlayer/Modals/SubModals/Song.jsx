@@ -12,7 +12,7 @@ const Songs = () => {
         <div
           onClick={() => playWithId(song.id)}
           key={index}
-          className="bg-gray-800 p-4 rounded-lg  flex flex-col items-center"
+          className="bg-transparent p-4 rounded-lg  flex flex-col items-center cursor-pointer hover:bg-gray-700"
         >
           <img
             src={song.image}

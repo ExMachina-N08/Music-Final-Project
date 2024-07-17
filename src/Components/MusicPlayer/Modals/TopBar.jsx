@@ -41,10 +41,11 @@ const TopBar = () => {
               type="text"
               placeholder="Search..."
               onChange={handleSearch}
-              className="transition-width duration-500 w-0 focus:w-[200px] bg-transparent rounded px-4 py-1 outline-none"
-              style={{
-                width: searchVisible ? "400px" : "0px",
-              }} // Apply dynamic width based on state
+              className={
+                searchVisible
+                  ? "  bg-transparent rounded px-4 py-1 outline-none"
+                  : " bg-transparent rounded px-4 py-1 outline-none"
+              }
             />
           )}
           <p

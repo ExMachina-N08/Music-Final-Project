@@ -91,7 +91,6 @@ const MusicPlayer = () => {
           width="15%"
           style={siderStyle}
           className="sider"
-          activeClassName="text-green-500"
           onClick={toggleActive}
         >
           {<SideBar />}
@@ -123,7 +122,7 @@ const MusicPlayer = () => {
           }}
           style={{ ...footerStyle, background: overlayBackground }}
           className="player"
-          data-isOpen={isOpen}
+          data-isopen={isOpen}
         >
           <Playbar
             onClick={() => setIsOpen(!isOpen)}

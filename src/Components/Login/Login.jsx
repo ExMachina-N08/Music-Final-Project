@@ -1,18 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "./login.css";
 import { SpotifyFilled } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input, ConfigProvider } from "antd";
+import { PlayerContext } from "../Context/PlayerContext";
 
 const Login = () => {
+  const { login } = useContext(PlayerContext);
   const navigate = useNavigate();
+
+  // Sample token generator function (for demonstration purposes)
+  const validateCredentials = (username, password) => {
+    // Simulate backend validation
+    if (username === "user" && password === "password") {
+      // Simulate generating a token
+      return "sample-token-1234567890";
+    }
+    return null;
+  };
 
   const onFinish = (values) => {
     console.log("Success:", values);
-    localStorage.setItem("userData", JSON.stringify(values));
-    navigate("/");
+    const token = validateCredentials(values.username, values.password);
+    if (token) {
+      localStorage.setItem("userData", JSON.stringify(values));
+      login(token);
+      navigate("/");
+    } else {
+      console.log("Invalid username or password");
+      // Handle invalid login (e.g., show an error message)
+    }
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -20,7 +39,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="login-div">
+      <div className="login-div mt-20 ">
         <SpotifyFilled style={{ fontSize: 60 }} />
         <h1>Log in to Music Apps </h1>
         <Form
@@ -28,9 +47,6 @@ const Login = () => {
           variant="filled"
           className="login-form"
           layout="vertical"
-          // labelCol={{
-          //   span: 8,
-          // }}
           wrapperCol={{
             span: 24,
           }}

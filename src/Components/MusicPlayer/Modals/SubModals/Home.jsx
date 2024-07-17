@@ -7,14 +7,14 @@ import { Routes, Route, Link, Outlet } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <div className="flex items-center gap-2 m-3">
+      {/* <div className="flex items-center gap-2 m-3">
         <p className="bg-white text-black px-4 py-1 rounded-2xl cursor-pointer">
           All
         </p>
         <p className="bg-black text-white px-4 py-1 rounded-2xl cursor-pointer">
           Music
         </p>
-      </div>
+      </div> */}
       <div className="overflow-auto m-3">
         <div className="my-5 font-bold text-2xl">
           <h1 className="my-5 font-bold text-2xl">Feature Charts</h1>

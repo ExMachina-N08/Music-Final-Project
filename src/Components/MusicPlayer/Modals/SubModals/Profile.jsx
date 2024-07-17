@@ -20,7 +20,7 @@ const validateMessages = {
 };
 
 const Profile = ({ onClose }) => {
-  const { setUsername, updateProfile } = useContext(PlayerContext);
+  const { setUsername, updateProfile, logout } = useContext(PlayerContext);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [file, setFile] = useState(null);
@@ -43,7 +43,7 @@ const Profile = ({ onClose }) => {
     const { name, password } = values.user;
     setUsername(name);
     localStorage.setItem("username", name);
-    localStorage.setItem("password", btoa(password));
+    // localStorage.setItem("password", btoa(password));
     if (previewImage && isImageReady) {
       localStorage.setItem("profileImage", previewImage);
       console.log("Image successfully saved to localStorage.");
@@ -71,39 +71,49 @@ const Profile = ({ onClose }) => {
         onFinish={onFinish}
         validateMessages={validateMessages}
       >
-        <Form.Item label="Upload Image">
-          <input type="file" accept="image/*" onChange={handleFileChange} />
-          {previewImage && (
-            <img
-              src={previewImage}
-              alt="Preview"
-              style={{ width: "100%", marginTop: 8 }}
-            />
-          )}
-        </Form.Item>
-        <Form.Item
-          name={["user", "name"]}
-          label="Username"
-          rules={[{ required: true }]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
+        <div className="mt-5 ml-3 flex flex-col items-start ">
+          <Form.Item label="Upload Image">
+            <input type="file" accept="image/*" onChange={handleFileChange} />
+            {previewImage && (
+              <img
+                src={previewImage}
+                alt="Preview"
+                style={{ width: "100%", marginTop: 8 }}
+              />
+            )}
+          </Form.Item>
+          <Form.Item
+            name={["user", "name"]}
+            label="Username"
+            rules={[{ required: true }]}
+          >
+            <Input />
+          </Form.Item>
+        </div>
+        {/* <Form.Item
           name="password"
           label="Password"
           rules={[{ required: true, message: "Please input your password!" }]}
         >
           <Input.Password />
-        </Form.Item>
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button
-            type="primary"
-            htmlType="submit"
-            disabled={!isImageReady && file}
-          >
-            Submit
-          </Button>
-        </Form.Item>
+        </Form.Item> */}
+        <div className="flex flex-row justify-between ">
+          <Form.Item className="mt-5">
+            <Button
+              type="primary"
+              htmlType="submit"
+              disabled={!isImageReady && file}
+              className=" mx-6"
+            >
+              Submit
+            </Button>
+          </Form.Item>
+          <Form.Item className="mt-5">
+            <Button type="primary" danger onClick={logout}>
+              Logout
+            </Button>
+          </Form.Item>
+        </div>
       </Form>
     </Modal>
   );

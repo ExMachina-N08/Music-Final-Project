@@ -4,6 +4,25 @@ import { extractColors } from "extract-colors";
 export const PlayerContext = createContext();
 
 const PlayerContextProvider = ({ children }) => {
+  //Authenticate user and password
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    setIsAuthenticated(!!token);
+  }, []);
+
+  const login = (token) => {
+    localStorage.setItem("authToken", token);
+    setIsAuthenticated(true);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("authToken");
+    setIsAuthenticated(false);
+  };
+
+  //Music player function
   const audioRef = useRef(new Audio());
   const seekBg = useRef();
   const seekBar = useRef();
@@ -44,6 +63,26 @@ const PlayerContextProvider = ({ children }) => {
       minute: 0,
     },
   });
+  useEffect(() => {
+    setTimeout(() => {
+      audioRef.current.ontimeupdate = () => {
+        seekBar.current.style.width =
+          Math.floor(
+            (audioRef.current.currentTime / audioRef.current.duration) * 100
+          ) + "%";
+        setTime({
+          currentTime: {
+            second: Math.floor(audioRef.current.currentTime % 60),
+            minute: Math.floor(audioRef.current.currentTime / 60),
+          },
+          totalTime: {
+            second: Math.floor(audioRef.current.duration % 60),
+            minute: Math.floor(audioRef.current.duration / 60),
+          },
+        });
+      };
+    }, 1000);
+  }, [audioRef]);
 
   // create play function
   const play = () => {
@@ -77,32 +116,12 @@ const PlayerContextProvider = ({ children }) => {
       setPlayStatus(true);
     }
   };
-  const seekSong = async (e) => {
-    audioRef.current.currentTime =
-      (e.nativeEvent.offsetX / seekBg.current.offsetWidth) *
-      audioRef.current.duration;
-    console.log(e);
+  const seekSong = (e) => {
+    const seekBgWidth = seekBg.current.offsetWidth;
+    const seekTime =
+      (e.nativeEvent.offsetX / seekBgWidth) * audioRef.current.duration;
+    audioRef.current.currentTime = seekTime;
   };
-  useEffect(() => {
-    setTimeout(() => {
-      audioRef.current.ontimeupdate = () => {
-        seekBar.current.style.width =
-          Math.floor(
-            (audioRef.current.currentTime / audioRef.current.duration) * 100
-          ) + "%";
-        setTime({
-          currentTime: {
-            second: Math.floor(audioRef.current.currentTime % 60),
-            minute: Math.floor(audioRef.current.currentTime / 60),
-          },
-          totalTime: {
-            second: Math.floor(audioRef.current.duration % 60),
-            minute: Math.floor(audioRef.current.duration / 60),
-          },
-        });
-      };
-    }, 1000);
-  }, [audioRef]);
 
   const [activePath, setActivePath] = useState("");
 
@@ -145,6 +164,9 @@ const PlayerContextProvider = ({ children }) => {
   };
 
   const contextValue = {
+    isAuthenticated,
+    login,
+    logout,
     audioRef,
     seekBg,
     seekBar,

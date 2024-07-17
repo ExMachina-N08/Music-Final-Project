@@ -17,6 +17,7 @@ const Playbar = ({ onAlbumClick }) => {
     next,
     seekSong,
   } = useContext(PlayerContext);
+
   // State to toggle the class
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -44,13 +45,13 @@ const Playbar = ({ onAlbumClick }) => {
               : "album lg:flex items-center gap-4"
           }
         >
-          <div className="rounded">
+          <div className="rounded-lg">
             <img
               onClick={handleImageClick}
               className={
                 isExpanded
-                  ? "p-6 w-[350px] rounded h-full xl:w-[600px] lg:w-[500px] md:w-[400px] "
-                  : "w-12  rounded"
+                  ? "p-6 w-[350px] rounded-lg h-full xl:w-[600px] lg:w-[500px] md:w-[400px]"
+                  : "w-12 rounded-lg"
               }
               src={track.image}
               alt=""

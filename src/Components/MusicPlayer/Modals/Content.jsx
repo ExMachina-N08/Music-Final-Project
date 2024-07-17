@@ -34,18 +34,14 @@ const Contents = () => {
     }
   }, [bgColor, isAlbum]);
   // Function to handle click on search result
-  const handleResultClick = (songId) => {
-    // Navigate to a detailed view, or play the song, etc.
-    // Example: navigate to /songs/songId
-    console.log("navigate", navigate(`/song/${songId}`));
-  };
+
   return (
     <div ref={displayRef} className="w-[100%] m-1 px-4 pt-4 rounded ">
       {searchQuery && filteredSongs.length > 0 ? (
         filteredSongs.map((song) => (
           <div
             key={song.id}
-            className="p-2 m-2 bg-gray-800 rounded-lg"
+            className="p-2 m-2 bg-black rounded-lg cursor-pointer hover:bg-gray-800"
             onClick={() => playWithId(song.id)}
           >
             <h3>{song.name}</h3>
