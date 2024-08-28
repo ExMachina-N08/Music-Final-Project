@@ -10,6 +10,6 @@ export default defineConfig({
   },
   // for dev
   server: {
-    port: 3000,
+    port: 8080,
   },
 });
